@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 #-------------------------------------------------------------------------------------------------------------
-FROM debian:stretch
+FROM python:3
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
@@ -41,20 +41,14 @@ RUN apt-get update \
     # * Uncomment this section to use RUN to install other dependencies.  *
     # * See https://aka.ms/vscode-remote/containers/dockerfile-run        *
     # *********************************************************************
-    && apt-get -y install --no-install-recommends build-essential libreadline-dev libffi-dev pkg-config libltdl-dev python-setuptools python-dev git dh-autoreconf python3 python3-pip python3-setuptools \
-    && cd /usr/local/ \
-    && git clone https://github.com/micropython/micropython.git \
-    && cd micropython/mpy-cross \
-    && make \
-    && cd ../ports/unix \
-    && make submodules \
-    && make deplibs \
-    && make \
-    && make install \
-    && cd ../../.. \
-    && git clone https://github.com/micropython/micropython-lib.git \
-    && cd micropython-lib \
-    && make install \
+    #
+    # Install pylint
+    && pip --disable-pip-version-check --no-cache-dir install pylint \
+    #
+    # Update Python environment based on requirements.txt
+    # && pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
+    # && rm -rf /tmp/pip-tmp \
+    #
     #
     # Clean up
     && apt-get autoremove -y \
