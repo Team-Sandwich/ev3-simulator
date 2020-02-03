@@ -46,6 +46,7 @@ class display:
         """
         Clear everything on the display.
         """
+        print('Clear display')
 
     @staticmethod
     def image(file_name: Union[str, ImageFile], alignment: Align = Align.CENTER, coordinate: Tuple[int, int] = None, clear: bool = True):

@@ -1,4 +1,5 @@
 import sys
+import builtins
 
 def print(*value, sep: str = ' ', end: str = '\n', file=sys.stdout, flush: bool = False):
     """
@@ -16,6 +17,7 @@ def print(*value, sep: str = ' ', end: str = '\n', file=sys.stdout, flush: bool 
     flush : bool - True to forcibly flush the stream.
     """
     ...
+    builtins.print(*value, sep=sep, end=end, file=file, flush=flush)
 
 
 def wait(time: int):
