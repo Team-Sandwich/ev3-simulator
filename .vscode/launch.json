@@ -5,10 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python (Integrated Terminal)",
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python Main in Simulator",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/scripts/main.py",
+            "args": [
+                "--simulate"
+            ],
             "console": "integratedTerminal"
         }
     ]
