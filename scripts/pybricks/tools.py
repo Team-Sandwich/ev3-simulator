@@ -1,5 +1,6 @@
 import sys
 import builtins
+import time
 
 def print(*value, sep: str = ' ', end: str = '\n', file=sys.stdout, flush: bool = False):
     """
@@ -16,18 +17,17 @@ def print(*value, sep: str = ' ', end: str = '\n', file=sys.stdout, flush: bool 
 
     flush : bool - True to forcibly flush the stream.
     """
-    ...
     builtins.print(*value, sep=sep, end=end, file=file, flush=flush)
 
 
-def wait(time: int):
+def wait(milliseconds: int):
     """
     Pause the user program for a specified amount of time.
 
     ----------
     time : int - How long to wait in milliseconds
     """
-    ...
+    time.sleep(milliseconds/1000)
 
 
 class StopWatch:
